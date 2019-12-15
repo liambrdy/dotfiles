@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+dunst &
+start-pulseaudio-x11 &
+setbg &
+picom -C &
+redshift &
+polybar main &
