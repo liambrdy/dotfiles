@@ -5,4 +5,5 @@ start-pulseaudio-x11 &
 setbg &
 picom -C &
 redshift &
+wal -R &
 polybar main &

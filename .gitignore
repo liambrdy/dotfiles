@@ -1,1 +1,8 @@
-nvim/.config/nvim/plugged
+plugged
+playlists
+
+database
+state
+pid
+.zcompdump
+.zcompdump-archlinux-5.7.1
