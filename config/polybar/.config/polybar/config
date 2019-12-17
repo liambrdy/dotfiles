@@ -17,7 +17,6 @@ modules-right = wireless-network battery powermenu
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
-
 [module/i3]
 type = internal/i3
 
@@ -94,16 +93,15 @@ type = internal/date
 interval = 1
 
 date = %a %b %d, 
-time = %H:%M:%S
+time = %I:%M %p
 
 date-alt = %A, %d %B %Y
-time-alt = %H:%M:%S
+time-alt = %I:%M %p
 
 format = <label>
 format-padding = 2
 
 label =  %date% %time%
-
 
 [module/battery]
 type = internal/battery
@@ -236,4 +234,4 @@ format-disconnected-padding = 2
 
 label-connected =  %essid%
 
-label-disconnected =  None
+label-disconnected = 睊
