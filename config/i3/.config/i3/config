@@ -29,6 +29,8 @@ for_window [class   = "^.*"] border pixel 0
 for_window [title   = "^.*"] border pixel 0
 for_window [class = "St"] border pixel 2
 
+for_window [instance="dropdown_*"] floating enable
+
 # smart_borders on
 # smart_gaps on
 
@@ -58,6 +60,7 @@ client.background       $bg
 #                       
 
 set $mod Mod4
+
 floating_modifier Mod4
 focus_follows_mouse yes
 
@@ -220,6 +223,10 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 for_window [class   = "rofi"] floating enable sticky enable
 for_window [class   = "Lxappearance"] floating enable
 for_window [title   = "\bopencvimage\b"] floating enable
+
+for_window [class = "vklib"] floating enable
+for_window [class = "Breakout"] floating enable
+for_window [class = "Arcanum"] floating enable
 
 #    ___ _____ _   ___ _____ _   _ ___ 
 #   / __|_   _/_\ | _ \_   _| | | | _ \

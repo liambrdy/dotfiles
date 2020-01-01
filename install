@@ -35,48 +35,38 @@ EOF
 }
 
 ## Install all the config
-install_all(){
-echo -e "$BLUE[*] Installing all the configs$CLC\n "
-# install parent configs
-for config in {profile,scripts,x}
-do
-        echo -ne "    [+] Installing $config ..."
-        stow -t ~ "$config"
-        sleep 1
-        echo -ne "...     \t$GREEN[DONE]$CLC"
-        echo -ne "\n"
-done
-# install additional configs from the config dir
-cd config
-for config in *
-do
-        echo -ne "    [+] Installing $config ..."
-        stow -t ~ "$config"
-        sleep 1
-        echo -ne "...     \t$GREEN[DONE]$CLC"
-        echo -ne "\n"
-done
-cd ..
-echo ""
-exit
+install_all() {
+        echo -e "$BLUE[*] Installing all the configs$CLC\n "
+        # install parent configs
+        for config in {profile,scripts,x}
+        do
+                echo -ne "    [+] Installing $config ..."
+                stow -t ~ "$config"
+                sleep 1
+                echo -ne "...     \t$GREEN[DONE]$CLC"
+                echo -ne "\n"
+        done
+        # install additional configs from the config dir
+        cd config
+        for config in *
+        do
+                echo -ne "    [+] Installing $config ..."
+                stow -t ~ "$config"
+                sleep 1
+                echo -ne "...     \t$GREEN[DONE]$CLC"
+                echo -ne "\n"
+        done
+        cd ..
+        echo ""
+        exit
 }
 
 ## Install specific config
-install_config(){
+install_config() {
 # get user input
-echo -ne "$BLUE[*] Enter config name to install$CLC > "
-read config
-# install a specific config
-if [[ -d "$config" ]];then
-        echo -ne "    [+] Installing $config ..."
-        stow -t ~ "$config"
-        sleep 1
-        echo -ne "... \t$GREEN[DONE]$CLC"
-        echo -ne "\n\n"
-        exit
-else
-        # Change directory
-        cd config
+        echo -ne "$BLUE[*] Enter config name to install$CLC > "
+        read config
+        # install a specific config
         if [[ -d "$config" ]];then
                 echo -ne "    [+] Installing $config ..."
                 stow -t ~ "$config"
@@ -85,46 +75,46 @@ else
                 echo -ne "\n\n"
                 exit
         else
-                # Get out of directory
-                # Print error message and exit
-                cd ..
-                echo -e "    $RED[-] $config config not found$CLC.\n    View all the available configs to install\n"
-                exit
+                # Change directory
+                cd config
+                if [[ -d "$config" ]];then
+                        echo -ne "    [+] Installing $config ..."
+                        stow -t ~ "$config"
+                        sleep 1
+                        echo -ne "... \t$GREEN[DONE]$CLC"
+                        echo -ne "\n\n"
+                        exit
+                else
+                        # Get out of directory
+                        # Print error message and exit
+                        cd ..
+                        echo -e "    $RED[-] $config config not found$CLC.\n    View all the available configs to install\n"
+                        exit
+                fi
         fi
-fi
 }
 
 ## Delete all the installed configs
-delete_all(){
-echo -ne "[+] Deleting all installed config ..."
-stow -D "$config"
-sleep 1
-echo -ne "..."
-cd config
-stow -D "$config"
-sleep 1
-echo -ne "... $GREEN[DONE]$CLC"
-echo -ne "\n\n"
-cd ..
-exit
+delete_all() {
+        echo -ne "[+] Deleting all installed config ..."
+        stow -D "$config"
+        sleep 1
+        echo -ne "..."
+        cd config
+        stow -D "$config"
+        sleep 1
+        echo -ne "... $GREEN[DONE]$CLC"
+        echo -ne "\n\n"
+        cd ..
+        exit
 }
 
 ## Delete a specific config
-delete_config(){
-# get user input
-echo -ne "$BLUE[*] Enter config name to delete$CLC > "
-read config
-# deleting a specific config
-if [[ -d "$config" ]];then
-        echo -ne "    [+] Deleting $config ..."
-        stow -D ~ "$config"
-        sleep 1
-        echo -ne "... \t$GREEN[DONE]$CLC"
-        echo -ne "\n\n"
-        exit
-else
-        # Change directory
-        cd config
+delete_config() {
+        # get user input
+        echo -ne "$BLUE[*] Enter config name to delete$CLC > "
+        read config
+        # deleting a specific config
         if [[ -d "$config" ]];then
                 echo -ne "    [+] Deleting $config ..."
                 stow -D ~ "$config"
@@ -133,26 +123,34 @@ else
                 echo -ne "\n\n"
                 exit
         else
-                # Get out of directory
-                # Print error message and exit
-                cd ..
-                echo -e "    $RED[-] $config config not found$CLC.\n"
-                exit
+                # Change directory
+                cd config
+                if [[ -d "$config" ]];then
+                        echo -ne "    [+] Deleting $config ..."
+                        stow -D ~ "$config"
+                        sleep 1
+                        echo -ne "... \t$GREEN[DONE]$CLC"
+                        echo -ne "\n\n"
+                        exit
+                else
+                        # Get out of directory
+                        # Print error message and exit
+                        cd ..
+                        echo -e "    $RED[-] $config config not found$CLC.\n"
+                        exit
+                fi
         fi
-fi
 }
 
 # View all the available config
-view_configs(){
-echo ""                       	
-echo "├────────────────[Available Configs]──────────────────┤"
-echo "│ bash color compton fonts homepage irssi vim zathura │"
-echo "│ local newsboat themes tmux vim weechat ranger       │"
-echo "│ bspwm cava i3-gaps lemonbar luakit mpd mpv rofi     │"
-echo "│ mutt ncmpcpp polybar popups pulse qutebrowser sxhkd │"
-echo "└─────────────────────────────────────────────────────┘"
-echo ""
-exit
+view_configs() {
+        echo ""                       	
+        echo "├────────────[Available Configs]──────────────┤"
+        echo "│        zsh picom ncmpcpp polybar i3 mpd     │"
+        echo "│               scripts nvim ranger           │"
+        echo "└─────────────────────────────────────────────┘"
+        echo ""
+        exit
 }
 
 #

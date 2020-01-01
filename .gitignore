@@ -6,3 +6,5 @@ state
 pid
 .zcompdump
 .zcompdump-archlinux-5.7.1
+gtkfilechooser.ini
+.netrwhist
