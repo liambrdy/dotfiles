@@ -1,12 +1,12 @@
  [colors]
 
-background = #2a2228
+background = #291742
 foreground = #FFFFFF
 primary = #8C3D45
 secondary = #D05156
 alert = #FF0000
 
-workspaces = #B54D3A
+workspaces = #917bbb
 
 right1 = #B54D3A
 right2 = #91444B
