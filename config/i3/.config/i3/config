@@ -15,15 +15,22 @@
 #     \_/ |___|___/\___/_/ \_\____|
 #                                  
                      
-font pango          : Roboto, Light 0
-for_window [class   = ".*"] title_format "%title  ⋯  %class"
+font pango:DejaVu Sans Mono 10
+for_window [class   = ".*"] title_format "%class"
 title_align center
 
 # Set inner/outer gaps
-gaps inner 0
-gaps outer 10
-gaps top 5
-gaps bottom 5
+gaps inner 15
+gaps outer 0
+gaps top 0
+smart_borders on
+
+bindsym $mod+u border none
+bindsym $mod+y border pixel 1
+bindsym $mod+n border normal
+
+new_window pixel 1
+new_float normal
 
 for_window [class   = "^.*"] border pixel 0
 for_window [title   = "^.*"] border pixel 0
@@ -31,18 +38,14 @@ for_window [class = "St"] border pixel 2
 
 for_window [instance="dropdown_*"] floating enable
 
-# smart_borders on
-# smart_gaps on
-
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
-set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $fg i3wm.color7 #000000
 set_from_resource $bg i3wm.color0 #000000
-set_from_resource $ac i3wm.color8 #2f2f2f
-
+set_from_resource $ac i3wm.color8 #ff00ff
 
 # class                 border  backgr. text indicator child_border
 client.focused          $ac     $ac     $fg  $ac       $ac
@@ -77,15 +80,14 @@ bindsym --whole-window $mod+button2 floating toggle
 bindsym $mod+Return exec $TERMINAL
 
 # Rofi drun menu
-bindsym $mod+d exec "rofi -show drun -theme ~/.cache/wal/colors-rofi-dark.rasi"
-bindsym $mod+l exec theme_menu
-
+bindsym $mod+d exec "rofi -show drun"
+bindsym $mod+s exec "rofi -show window"
 # Power menu
 bindsym $mod+Shift+e exec shutdown_menu
 bindsym $mod+Shift+l exec i3lock-fancy
 
 # Take a screenshot
-bindsym Print exec "scrot '%Y-%m-%d_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'"
+bindsym Print exec "scrot '%Y-%m-%d-%T_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'"
 
 bindsym $mod+c exec $BROWSER
 
@@ -211,7 +213,7 @@ mode "$mode_gaps" {
 # Shortcut for audio control
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id amixer pactl -- set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioMute exec --no-startup-id pactl -- set-sink-mute 0 toggle # mute sound
 
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
@@ -227,6 +229,8 @@ for_window [title   = "\bopencvimage\b"] floating enable
 for_window [class = "vklib"] floating enable
 for_window [class = "Breakout"] floating enable
 for_window [class = "Arcanum"] floating enable
+for_window [class = "Artifex"] floating enable
+for_window [class = "OpenGL"] floating enable
 
 #    ___ _____ _   ___ _____ _   _ ___ 
 #   / __|_   _/_\ | _ \_   _| | | | _ \

@@ -146,8 +146,9 @@ delete_config() {
 view_configs() {
         echo ""                       	
         echo "├────────────[Available Configs]──────────────┤"
-        echo "│        zsh picom ncmpcpp polybar i3 mpd     │"
-        echo "│               scripts nvim ranger           │"
+        echo "│        zsh ncmpcpp polybar i3 mpd nvim      │"
+        echo "│           scripts ranger newsboat rc        │"        
+        echo "│                oh-my-zsh picom              │"
         echo "└─────────────────────────────────────────────┘"
         echo ""
         exit

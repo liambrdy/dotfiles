@@ -1,18 +1,30 @@
+include-file = ~/.config/polybar/color
+
 [bar/main]
 width = 100%
-height = 35
-
-background = #141021
-foreground = #c4b7c5
-
+height = 25
+offset-x = 0
+offset-y = 0
 fixed-center = true
 
-font-0 = PragmataPro:pixelsize=10:weight=bold;0
-font-1 = FuraCode Nerd Font:pixelsize=13:weight=bold;0
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+border-bottom-size = 0
+border-color = ${colors.workspaces}
+
+padding-left = 0
+padding-right = 1
+
+font-0 = PragmataPro:pixelsize=10:weight=bold;2
+font-1 = FuraCode Nerd Font:pixelsize=13:weight=bold;2
 
 modules-left = i3
 modules-center = date
-modules-right = wireless-network battery powermenu
+modules-right = alsa wireless-network battery
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -27,12 +39,19 @@ enable-scroll = false
 
 format = <label-state>
 format-padding-right = 2
+format-padding-left = 2
 
-label-unfocused-foreground = #8a7f8f
+label-unfocused = " %index% "
+label-unfocused-foreground = #ffe0b2
+label-unfocused-background = ${colors.background}
 label-unfocused-padding = 1
+label-unfocused-alignment = center
 
-label-focused-foreground = #c16772
+label-focused = " %index% "
+label-focused-foreground = #ffe0b2
+label-focused-background = ${colors.workspaces}
 label-focused-padding = 1
+label-focused-alignment = center
 
 label-urgent-foreground = #e4b226
 label-urgent-padding = 1
@@ -65,7 +84,7 @@ type = internal/temperature
 
 interval = 1
 
-thermal-zone = 6
+thermal-zone = 0
 
 warn-temperature = 80
 
@@ -85,7 +104,6 @@ ramp-1 = 
 ramp-2 = 
 ramp-3 = 
 ramp-4 = 
-
 
 [module/date]
 type = internal/date
@@ -114,13 +132,13 @@ adapter = ACAD
 poll-interval = 5
 
 format-charging = <animation-charging> <label-charging>
-format-charging-padding = 2
+format-charging-padding = 1
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-padding = 2
+format-discharging-padding = 1
 
 format-full = <ramp-capacity> <label-full>
-format-full-padding = 2
+format-full-padding = 1
 
 label-charging = %percentage%%
 
@@ -153,74 +171,6 @@ format-padding = 2
 label =  %percentage%%
 
 
-[module/pavolume]
-type = custom/script
-
-interval = 1
-
-format-padding = 2
-
-exec = ~/scripts/pavolume.sh
-
-click-left = ~/scripts/pavolume.sh --togmute
-scroll-up = ~/scripts/pavolume.sh --up
-scroll-down = ~/scripts/pavolume.sh --down
-
-
-[module/powermenu]
-type = custom/menu
-
-label-open =   
-
-label-close = cancel
-
-label-close-background = #312842
-label-close-foreground = #ffeefc
-label-open-padding-left = 4
-label-open-padding-right = 3
-label-close-padding = 3
-
-menu-0-0 = lock
-menu-0-0-exec = ~/scripts/lock.sh
-menu-0-0-background = #312842
-menu-0-0-foreground = #c05c47
-menu-0-0-padding-right = 3
-
-menu-0-1 = reboot
-menu-0-1-exec = menu-open-1
-menu-0-1-background = #312842
-menu-0-1-foreground = #c05c47
-menu-0-1-padding-right = 3
-
-menu-0-2 = power off
-menu-0-2-exec = menu-open-2
-menu-0-2-background = #312842
-menu-0-2-foreground = #c05c47
-menu-0-2-padding-right = 3
-
-menu-1-0 = reboot?  
-menu-1-0-exec = reboot
-menu-1-0-background = #312842
-menu-1-0-foreground = #e4b226
-menu-1-0-padding-right = 3
-
-menu-2-0 = power off?  
-menu-2-0-exec = poweroff
-menu-2-0-background = #312842
-menu-2-0-foreground = #e4b226
-menu-2-0-padding-right = 3
-
-
-[module/weather]
-type = custom/script
-
-interval = 120
-
-format-padding = 2
-
-exec = ~/scripts/weather.py
-
-
 [module/wireless-network]
 type = internal/network
 
@@ -235,3 +185,14 @@ format-disconnected-padding = 2
 label-connected =  %essid%
 
 label-disconnected = 睊
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = <ramp-volume> <label-volume>
+
+label-muted = 婢 muted
+
+ramp-volume-0 = 
+ramp-volume-1 = 墳
+ramp-volume-2 = 
