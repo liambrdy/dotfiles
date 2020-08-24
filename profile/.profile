@@ -1,8 +1,8 @@
-export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//'):$HOME/factorio/bin/x64/:$HOME/opt/cross/bin"
+export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//'):$HOME/factorio/bin/x64/:$HOME/opt/cross/bin:$HOME/renderdoc/build/bin:$HOME/.cabal/bin"
 
 export TERMINAL="st"
 export EDITOR="nvim"
-export BROWSER="chromium"
+export BROWSER="firefox"
 export FILE="ranger"
 
 export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"

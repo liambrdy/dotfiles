@@ -20,7 +20,7 @@ for_window [class   = ".*"] title_format "%class"
 title_align center
 
 # Set inner/outer gaps
-gaps inner 15
+gaps inner 0
 gaps outer 0
 gaps top 0
 smart_borders on
@@ -213,7 +213,7 @@ mode "$mode_gaps" {
 # Shortcut for audio control
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl -- set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle # mute sound
 
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
@@ -231,7 +231,22 @@ for_window [class = "Breakout"] floating enable
 for_window [class = "Arcanum"] floating enable
 for_window [class = "Artifex"] floating enable
 for_window [class = "OpenGL"] floating enable
-
+for_window [class = "feh"] floating enable
+for_window [class = "Ray Tracer"] floating enable
+for_window [class = "Epoch Engine"] floating enable
+for_window [class = "No Title Yet"] floating enable
+for_window [class = "Vulkan"] floating enable
+for_window [class = "Alternite"] floating enable
+for_window [class = "main"] floating enable
+for_window [class = "St"] floating enable
+for_window [class = "RPG"] floating enable
+for_window [title = "TicTac"] floating enable
+for_window [class = "Rasterizer"] floating enable
+for_window [class = "Handmade"] floating enable
+for_window [title = "Handmade"] floating enable
+for_window [class = "wineconsole.exe"] floating enable
+for_window [class = "zenith"] floating enable
+for_window [class = "chess"] floating enable
 #    ___ _____ _   ___ _____ _   _ ___ 
 #   / __|_   _/_\ | _ \_   _| | | | _ \
 #   \__ \ | |/ _ \|   / | | | |_| |  _/

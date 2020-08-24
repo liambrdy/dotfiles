@@ -7,6 +7,8 @@ offset-x = 0
 offset-y = 0
 fixed-center = true
 
+override-redirect = false
+
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -53,9 +55,11 @@ label-focused-background = ${colors.workspaces}
 label-focused-padding = 1
 label-focused-alignment = center
 
-label-urgent-foreground = #e4b226
+label-urgent = " %index% "
+label-urgent-foreground = #FF0000
+label-urgent-background = ${colors.background}
 label-urgent-padding = 1
-
+label-urgent-alignment = center
 
 [module/cpu]
 type = internal/cpu
